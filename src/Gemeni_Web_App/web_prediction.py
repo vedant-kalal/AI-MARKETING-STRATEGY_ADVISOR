@@ -28,14 +28,18 @@ def web_predict():
     previous = st.number_input("Number of Previous Contacts", 0, 20, 0)
     poutcome = st.selectbox("Previous Outcome", ["success", "failure", "other", "unknown"])
 
-    # initialize session variable
-    st.session_state.prob = None
-    st.session_state.pred = None
+    # initialize session variables only if they don't already exist
+    if 'prob' not in st.session_state:
+        st.session_state.prob = None
+    if 'pred' not in st.session_state:
+        st.session_state.pred = None
     
 
     if st.button("Predict"):
+        model = st.session_state.get("model")
         model_path = r"c:\Github Projects\AI-MARKETING-STRATEGY_ADVISOR\models\final_model.pkl"
         model = load(model_path)
+        st.session_state["model"] = model
 
         d = {
             "age": age, "job": job, "marital": marital, "education": education, "default": default,
@@ -65,7 +69,6 @@ def web_predict():
         st.error(f"Prediction: NO — User Did Not Subscribe ({st.session_state.prob}%)")
 
     st.caption("Model used: models/final_model.pkl")
-    
     return st.session_state.prob, contact, previous, education, age, marital, loan
     
 

@@ -1,0 +1,28 @@
+# Core Libraries
+numpy
+pandas
+scikit-learn
+joblib
+python-dotenv
+pathlib
+
+# Model Selection & Optimization
+scikit-optimize
+imbalanced-learn
+
+# Web App (Frontend)
+streamlit
+
+# Google Gemini AI
+google-generativeai
+
+# Visualization & Analysis (for notebooks)
+matplotlib
+seaborn
+notebook
+jupyter
+pltotly
+
+
+
+

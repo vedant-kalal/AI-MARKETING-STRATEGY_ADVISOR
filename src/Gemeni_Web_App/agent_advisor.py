@@ -106,5 +106,6 @@ Now, write your complete marketing recommendation below.
         genai.configure(api_key=key)
         response = genai.GenerativeModel(model).generate_content(prompt)
         return response.text.strip()
+    
     except Exception as e:
         return f"Gemini error: {e}"
